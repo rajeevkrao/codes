@@ -1,0 +1,4 @@
+[
+  "(i) =>{\r\n\tconsole.log(i);\r\n}",
+  "() =>{\r\n\tconsole.log(1223);\r\n}"
+]

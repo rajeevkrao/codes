@@ -1,0 +1,14 @@
+{
+	"nodes":[
+		{"id":"rajeev","group":1},
+		{"id":"raj","group":1},
+		{"id":"ra","group":1}
+		{"id":"r","group":1}
+	],
+	"links":[
+		{"source":"rajeev","destination":"raj","value":1}
+		{"source":"raj","destination":"ra","value":1}
+		{"source":"ra","destination":"r","value":1}
+			
+	]
+}
