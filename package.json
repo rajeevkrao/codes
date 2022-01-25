@@ -5,6 +5,8 @@
   "dependencies": {
     "clipboard-event": "^1.5.0",
     "clipboardy": "^2.3.0",
+    "delay": "^5.0.0",
+    "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "dropbox-v2-api": "^2.4.38",
     "google-spreadsheet": "^3.1.15",
@@ -12,13 +14,17 @@
     "input": "^1.0.1",
     "instagram-scraping": "^1.0.13",
     "instagram-web-api": "^2.2.2",
+    "jsonwebtoken": "^8.5.1",
     "linkify": "^0.2.1",
     "linkifyjs": "^3.0.0-beta.3",
+    "mathjs": "^10.1.0",
     "minecraft-ping": "^1.0.0",
     "minecraft-pinger": "^1.0.5",
     "mongodb": "^3.5.5",
-    "ngrok": "^4.0.1",
+    "multer-drive": "^1.0.3",
+    "ngrok": "^4.3.0",
     "node-valorant-api": "^0.5.0",
+    "nodemailer": "^6.7.2",
     "open": "^8.2.1",
     "parse-function": "^5.6.10",
     "r-json": "^1.2.9",
@@ -31,6 +37,7 @@
     "tough-cookie-filestore2": "^1.0.0",
     "url-parse": "^1.5.3",
     "w-json": "^1.3.9",
+    "xml-parse": "^0.4.0",
     "yt-livechat": "^2.1.1"
   }
 }

@@ -1,4 +1,5 @@
 //Array of Function
+//Storing Functions in JSON
 var rj = require("r-json");
 var wj = require('w-json');
 
@@ -24,7 +25,6 @@ console.log(nFunc)
 for(i in nFunc){
 	nFunc[i] = eval(nFunc[i])
 }
-
 
 console.log(typeof(nFunc[0]))
 

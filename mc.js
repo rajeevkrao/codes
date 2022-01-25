@@ -1,22 +1,13 @@
 const { Telegraf } = require('telegraf')
 
-const bot = new Telegraf("2036584610:AAFMTtZR0s4FgC1ZFWP-FquHI6PwWiZTqPU");
+const bot = new Telegraf("1032314535:AAHMuYc7aIE5VcSn3XoXFjlX8-aqJvH44gE");
 
-/*bot.command('poll',ctx=>{
-	ctx.telegram.sendPoll(ctx.chat.id, "Ip for",["Java","Bedrock"])
-})*/
-
-(async()=>{
-	console.log(await bot.telegram.getChat(-525476811))
-})();
-bot.on('text',(ctx)=>{
-	try{
-	console.log(ctx.message.chat.id)
-	}
-	catch(err){
-
-	}
-	console.log(ctx.message.text)
+bot.on('text',async(ctx)=>{
+	//console.log(ctx.message)
+	bot.telegram.getChat("-1001568492513").then(chat=>{
+		if(chat.title == "Minecraft Server - Online🟢")
+			console.log(123)
+	})
 })
 
 //bot.telegram.sendMessage("-1001163504506","Testing")

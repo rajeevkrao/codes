@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css" integrity="sha512-6sALqOPMrNSc+1p5xOhPwGIzs6kIlST+9oGWlI4Wwcbj1saaX9J3uzO3Vub016dmHV7hM+bMi/rfXLiF5DNIZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+The content of the body element is displayed in your browser.
+<textarea id="myTextarea"></textarea>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js" integrity="sha512-XMlgZzPyVXf1I/wbGnofk1Hfdx+zAWyZjh6c21yGo/k1zNC4Ve6xcQnTDTCHrjFGsOrVicJsBURLYktVEu/8vQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  var editor = CodeMirror.fromTextArea(myTextarea, {
+    lineNumbers: true
+  });
+</script>
+</body>
+
+</html>

@@ -1,7 +1,11 @@
 function a(){
-	console.log(123)
+	return new Promise((resolve,reject)=>{
+		resolve(123)
+	})
 }
 
 a().then(()=>{
 	console.log("234")
 })
+
+console.log(123)

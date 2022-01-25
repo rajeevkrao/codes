@@ -7,15 +7,26 @@ const seAPI = axios.create({
   headers: {'Authorization': 'Bearer '+token}
 });
 
-seAPI.get('/bot/timers/5f69ff0087890519c7e76aaf')
+/*seAPI.get('/bot/commands/5f69ff0087890519c7e76aaf')
 .then((res)=>{
 	console.log(res.data)
-})
+})*/
 
-seAPI.put('/bot/timers/5f69ff0087890519c7e76aaf/6129cec4a2f35a431c86f9b3',{enabled:true,name:'Test Timer',chatLines:5,messages:['123','1222','234']})
+/*seAPI.put('/bot/timers/5f69ff0087890519c7e76aaf/6129cec4a2f35a431c86f9b3',{enabled:true,name:'Test Timer',chatLines:5,messages:['123','1222','234']})
 .then((res)=>{
 	console.log(res.data)
 })
 .catch(err=>{
 	console.log(err)
+})*/
+
+seAPI.put('/bot/commands/5f69ff0087890519c7e76aaf/61a2df2f1edae307f4564d7c',{
+	command:"songa",
+	reply:"Current Song Playinga"
+})
+.then((res)=>{
+	console.log(res.data)
+})
+.catch(err=>{
+	console.log(err.response.data)
 })
