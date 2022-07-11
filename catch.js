@@ -9,7 +9,7 @@ function av(a){
 
 (async()=>{
 	var a = await av(2).catch(err=>{
-
+		
 	})
 	console.log(a)
 })()

@@ -1,11 +1,50 @@
 const Discord = require("discord.js");
 
+const myIntents = new Discord.Intents();
+
+myIntents.add(Discord.Intents.FLAGS.GUILDS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_MEMBERS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_BANS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_INTEGRATIONS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_WEBHOOKS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_INVITES);
+myIntents.add(Discord.Intents.FLAGS.GUILD_VOICE_STATES);
+myIntents.add(Discord.Intents.FLAGS.GUILD_PRESENCES);
+myIntents.add(Discord.Intents.FLAGS.GUILD_MESSAGES);
+myIntents.add(Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS);
+myIntents.add(Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING);
+myIntents.add(Discord.Intents.FLAGS.DIRECT_MESSAGES);
+myIntents.add(Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS);
+myIntents.add(Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING);
+myIntents.add(Discord.Intents.FLAGS.GUILD_SCHEDULED_EVENTS);
+
 const client = new Discord.Client({
     disableEveryone: true,
-    fetchAllMembers: false,
+    fetchAllMembers: true,
     sync: true,
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'] 
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    intents: myIntents
 });
+
+/*
+GUILDS
+GUILD_MEMBERS
+GUILD_BANS
+GUILD_EMOJIS_AND_STICKERS
+GUILD_INTEGRATIONS
+GUILD_WEBHOOKS
+GUILD_INVITES
+GUILD_VOICE_STATES
+GUILD_PRESENCES
+GUILD_MESSAGES
+GUILD_MESSAGE_REACTIONS
+GUILD_MESSAGE_TYPING
+DIRECT_MESSAGES
+DIRECT_MESSAGE_REACTIONS
+DIRECT_MESSAGE_TYPING
+GUILD_SCHEDULED_EVENTS
+*/
 
 const wj = require('w-json')
 const { MessageEmbed } = require('discord.js');
@@ -53,9 +92,22 @@ config.token = process.env.TOKEN;
 
 client.on("ready", async() => {
   //934541194309042296
-  let guild = client.guilds.cache.get("395640375533895691")
+
+/*  setInterval((client)=>{
+    let guild = client.guilds.cache.get("395640375533895691")
+    let onlineMembers = (await guild.members.fetch()).filter((member) => !member.user.bot && (member.user.presence.status == 'online' || member.user.presence.status == 'dnd' || member.user.presence.status == 'idle')); // Remove the bot check as per use
+    client.channels.cache.get("935474087071993886").setName("Online Count: "+onlineMembers.size.toString())
+  },1000*60)*/
+
+/*  let guild = client.guilds.cache.get("395640375533895691")
   let onlineMembers = (await guild.members.fetch()).filter((member) => !member.user.bot && (member.user.presence.status == 'online' || member.user.presence.status == 'dnd' || member.user.presence.status == 'idle')); // Remove the bot check as per use
   client.channels.cache.get("935474087071993886").setName("Online Count: "+onlineMembers.size.toString())
+*/
+/*  let role = message.guild.roles.cache.find(r => r.id === "Role ID");
+  (await guild.members.fetch()).filter((member) =>{
+    if(!member.user.bot)
+  })*/
+
   //console.log(client.user.id) //get bot id
 /*  client.users.cache.get("366565330719473667").send("testing")
   .then(msg=>{
@@ -154,18 +206,29 @@ client.on("guildDelete", guild => {
   client.user.setActivity(`with ${client.guilds.cache.size} servers`);
 });
 
-client.on("message", async message => {
+client.on("typingStart", type=>{
+  console.log(type.user.username+ " is typing message in <CHANNEL> " + type.channel.name+ " <GUILD> "+type.channel.guild.name + " <TS> "+ type.startedTimestamp)
+})
+
+client.on("interactionCreate", async interaction=>{
+  console.log(interaction)
+  if(!interaction.isCommand())
+    return
+  console.log(interaction)
+})
+
+client.on("messageCreate", async message => {
+  //console.log(message.content)
   //console.log(message.guild);
   if(message.author.bot) return; 
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   if(command === "ping") {
+    console.log("logs")
     const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+    m.edit({content:`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`});
   } 
-
-
 
   if(message.content.startsWith(config.prefix + "botserversinv"))
   {
@@ -176,13 +239,25 @@ client.on("message", async message => {
       i++;
       })
       var embed = new MessageEmbed().setTitle("Servers which **" + client.user.username + "** has joined").setColor(0x0000FF).setDescription(string);
-      message.channel.send(embed);
+      message.channel.send({embeds:embed});
   };
 
-  if(command === "test"){
+  /*if(command === "test"){
     message.send(":thumbsup:").catch(err=>{
       console.log(err)
     })
+  }*/
+
+  if(command === "test"){
+    const row = new Discord.MessageActionRow()
+        .addComponents(
+          new Discord.MessageButton()
+            .setCustomId('primary')
+            .setLabel('Primary')
+            .setStyle('PRIMARY'),
+        );
+
+      await message.reply({ content: 'Pong!', components: [row] });
   }
 });
 
