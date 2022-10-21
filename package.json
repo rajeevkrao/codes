@@ -11,6 +11,7 @@
     "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
     "dropbox-v2-api": "^2.4.38",
+    "esprima": "^4.0.1",
     "google-spreadsheet": "^3.1.15",
     "googleapis": "^39.2.0",
     "input": "^1.0.1",
