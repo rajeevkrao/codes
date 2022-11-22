@@ -1,10 +1,15 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
+
+//app.use(cors()); 
+//Uncomment to allow cors for all routes
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static('public'))
 
 //Uncomment this section to Enable CORS
 /* app.use(function(req, res, next) {
