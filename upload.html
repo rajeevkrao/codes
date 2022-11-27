@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <input type="file"/>
+        <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.8.3/dist/ffmpeg.min.js"></script>
+        <script>
+            document.querySelector("input").onchange = (e) =>{
+                console.log(e.target.files[0])
+                /* let url = URL.createObjectURL(e.target.files[0])
+                console.log(url) */
+                let data = ffmpeg.read(e.target.files[0])
+                console.log(data)
+            }
+        </script>
+    </body>
+</html>

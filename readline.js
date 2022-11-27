@@ -11,3 +11,13 @@ rl.question('What do you think of Node.js? ', (answer) => {
 
   rl.close();
 });
+
+
+
+
+//Synchronous
+const rls = require("readline-sync");
+
+let answer = rl.question('What do you think of Node.js? ')
+
+console.log(`Thank you for your valuable feedback: ${answer}`);
