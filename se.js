@@ -22,7 +22,7 @@ const seAPI = axios.create({
 
 seAPI.put('/bot/commands/5f69ff0087890519c7e76aaf/61a2df2f1edae307f4564d7c',{
 	command:"songa",
-	reply:"Current Song Playinga"
+	reply:"Current Song Playing"
 })
 .then((res)=>{
 	console.log(res.data)

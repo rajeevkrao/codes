@@ -1,8 +1,8 @@
-var c = [
+/* var c = [
 	{type:"ExpressionStatement"}
 ]
 
-console.log(c)
+console.log(c) */
 
 
 /* var string = "ROOM ID - 1234567\nPASS - OTAKU\nStarts at 8:45pm\nBGMI Version"
